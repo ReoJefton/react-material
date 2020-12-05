@@ -36,11 +36,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(1),
       width: 'auto',
     },
   },
@@ -62,9 +61,15 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
     },
+  },
+  navButton: {
+    textTransform: 'unset',
   },
   sectionDesktop: {
     display: 'none',
@@ -177,6 +182,22 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant='h6' noWrap>
             Reo Jefton
           </Typography>
+          <Button className={classes.navButton} color='inherit'>
+            Home
+          </Button>
+          <Button className={classes.navButton} color='inherit'>
+            About
+          </Button>
+          {/* <Button className={classes.navButton} color='inherit'>
+              Skills
+            </Button>
+            <Button className={classes.navButton} color='inherit'>
+              Experience
+            </Button>
+            <Button className={classes.navButton} color='inherit'>
+              Contact
+            </Button> */}
+          <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -190,13 +211,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button color='inherit'>Home</Button>
-            <Button color='inherit'>About</Button>
-            <Button color='inherit'>Skills</Button>
-            <Button color='inherit'>Experience</Button>
-            <Button color='inherit'>Contact</Button>
             <IconButton aria-label='show 4 new mails' color='inherit'>
               <Badge badgeContent={4} color='secondary'>
                 <MailIcon />
