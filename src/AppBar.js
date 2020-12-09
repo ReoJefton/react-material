@@ -15,6 +15,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -68,8 +74,18 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  navUL: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    textAlign: 'center',
+    listStyle: 'none',
+  },
   navButton: {
     textTransform: 'unset',
+  },
+  navLink: {
+    color: 'white',
+    textDecoration: 'none',
   },
   sectionDesktop: {
     display: 'none',
@@ -197,21 +213,39 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Button className={classes.navButton} color='inherit'>
+
+          <nav>
+            <ul className={classes.navUL}>
+              <li>
+                <NavLink className={classes.navLink} to='/'>
+                  <Button className={classes.navButton} color='inherit'>
+                    Home
+                  </Button>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={classes.navLink} to='/about'>
+                  <Button className={classes.navButton} color='inherit'>
+                    About
+                  </Button>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={classes.navLink} to='/contact'>
+                  <Button className={classes.navButton} color='inherit'>
+                    Contact
+                  </Button>
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          {/* <Button className={classes.navButton} color='inherit' href='/'>
             Home
           </Button>
-          <Button className={classes.navButton} color='inherit'>
+          <Button className={classes.navButton} color='inherit' href='/about'>
             About
-          </Button>
-          {/* <Button className={classes.navButton} color='inherit'>
-              Skills
-            </Button>
-            <Button className={classes.navButton} color='inherit'>
-              Experience
-            </Button>
-            <Button className={classes.navButton} color='inherit'>
-              Contact
-            </Button> */}
+          </Button> */}
+
           <div className={classes.sectionDesktop}>
             <IconButton aria-label='show 4 new mails' color='inherit'>
               <Badge badgeContent={4} color='secondary'>
